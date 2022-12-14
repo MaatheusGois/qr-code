@@ -1,0 +1,20 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: bankingmobileapiversion
+spec:
+  ingressClassName: nginx-internal
+  rules:
+    - host: "*.btgbank.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /mobile-api-version(/|$)(.*)
+            backend:
+              service:
+                name: bankingmobileapiversion
+                port:
+                  number: 8080
