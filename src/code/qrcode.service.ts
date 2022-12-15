@@ -4,8 +4,6 @@ const sharp = require('sharp');
 
 @Injectable()
 export class QRCodeService {
-  public readonly token: string = 'CuZSUj7r6NfPpnYp';
-
   async create(text: string): Promise<string> {
   
     const svg = await toString(text, {
